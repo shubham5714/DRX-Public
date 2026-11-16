@@ -337,7 +337,7 @@ export default function PublicLandingSections() {
           </div>
           <div className="public-landing-vision__panel" aria-hidden>
             <Image
-              src={`${assetBase}/assets/images/brand-logos/logo-dark.png`}
+              src={`${assetBase}/assets/images/brand-logos/drx-logo.png`}
               alt=""
               width={180}
               height={48}
@@ -398,7 +398,7 @@ export default function PublicLandingSections() {
         <div className="public-landing-section__inner public-landing-footer__grid">
           <div>
             <Image
-              src={`${assetBase}/assets/images/brand-logos/logo-dark.png`}
+              src={`${assetBase}/assets/images/brand-logos/drx-logo.png`}
               alt="Cyber Docs"
               width={150}
               height={40}

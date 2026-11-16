@@ -359,12 +359,12 @@ const Header: React.FC<HeaderProps> = () => {
                         <div className="header-element">
                             <div className="horizontal-logo">
                                 <Link scroll={false} href="/dashboard/" className="header-logo">
-                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/desktop-logo.png`} alt="logo" className='desktop-logo' />
-                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/toggle-dark.png`} alt="logo" className="toggle-dark" />
-                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/desktop-dark.png`} alt="logo" className="desktop-dark" />
-                                    <Image width={29} height={32} src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/toggle-logo.png`} alt="logo" className="toggle-logo" />
-                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/toggle-white.png`} alt="logo" className="toggle-white" />
-                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/desktop-white.png`} alt="logo" className="desktop-white" />
+                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className='desktop-logo' />
+                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className="toggle-dark" />
+                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className="desktop-dark" />
+                                    <Image width={29} height={32} src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className="toggle-logo" />
+                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className="toggle-white" />
+                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className="desktop-white" />
                                 </Link>
                             </div>
                         </div>

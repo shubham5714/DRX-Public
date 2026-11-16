@@ -89,8 +89,8 @@ const Basic: React.FC<BasicProps> = () => {
                             <Card.Body className="p-5">
                                 <div className="mb-4 d-flex justify-content-center">
                                     <Link scroll={false} href="/dashboards/sales/">
-                                        <Image width={87} height={40} src="../../../assets/images/brand-logos/desktop-logo.png" alt="logo" className="desktop-logo" />
-                                        <Image width={87} height={40} src="../../../assets/images/brand-logos/desktop-white.png" alt="logo" className="desktop-white" />
+                                        <Image width={87} height={40} src="../../../assets/images/brand-logos/drx-logo.png" alt="logo" className="desktop-logo" />
+                                        <Image width={87} height={40} src="../../../assets/images/brand-logos/drx-logo.png" alt="logo" className="desktop-white" />
                                     </Link>
                                 </div>
                                 <p className="h5 mb-2 text-center">Create Password</p>

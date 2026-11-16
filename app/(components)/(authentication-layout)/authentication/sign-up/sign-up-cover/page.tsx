@@ -128,7 +128,7 @@ const Cover: React.FC<CoverProps> = () => {
                     <div className="authentication-cover overflow-hidden">
                         <div className="authentication-cover-logo">
                             <Link scroll={false} href="/dashboards/sales/">
-                                <Image fill src="../../../assets/images/brand-logos/desktop-white.png" alt="" className="authentication-brand desktop-white" />
+                                <Image fill src="../../../assets/images/brand-logos/drx-logo.png" alt="" className="authentication-brand desktop-white" />
                             </Link>
                         </div>
                         <div className="aunthentication-cover-content d-flex align-items-center justify-content-center">

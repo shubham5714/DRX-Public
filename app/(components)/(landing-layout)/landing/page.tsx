@@ -334,8 +334,8 @@ const Landing = ({ }) => {
                         <div className="header-element">
                             <div className="horizontal-logo">
                                 <Link href='/dashboards/sales' scroll={false} className="header-logo">
-                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/toggle-logo.png`} alt="logo" className="toggle-logo" />
-                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/toggle-dark.png`} alt="logo" className="toggle-dark" />
+                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className="toggle-logo" />
+                                    <Image fill src={`${process.env.NODE_ENV === 'production' ? basePath : ''}/assets/images/brand-logos/drx-logo.png`} alt="logo" className="toggle-dark" />
                                 </Link>
                             </div>
                         </div>
@@ -397,9 +397,9 @@ const Landing = ({ }) => {
                             <div className="landing-logo-container">
                                 <div className="horizontal-logo">
                                     <Link scroll={false} href="/dashboards/sales/" className="header-logo">
-                                        <Image fill src={`../assets/images/brand-logos/desktop-logo.png`} alt="logo"
+                                        <Image fill src={`../assets/images/brand-logos/drx-logo.png`} alt="logo"
                                             className="desktop-logo" />
-                                        <Image fill src={`../assets/images/brand-logos/desktop-white.png`} alt="logo"
+                                        <Image fill src={`../assets/images/brand-logos/drx-logo.png`} alt="logo"
                                             className="desktop-white" />
                                     </Link>
                                 </div>
@@ -1102,7 +1102,7 @@ const Landing = ({ }) => {
                             <Row className="">
                                 <Col lg={3} md={6} className=" mb-4 mb-lg-0">
                                     <Link scroll={false} href="/dashboards/sales/" className="d-inline-block mb-2">
-                                        <Image fill src="../assets/images/brand-logos/desktop-white.png" alt="img" />
+                                        <Image fill src="../assets/images/brand-logos/drx-logo.png" alt="img" />
                                     </Link>
                                     <p className="mb-4 op-8 fs-15">
                                         At dolor clita amet erat takimata sed tempor invidunt lorem.

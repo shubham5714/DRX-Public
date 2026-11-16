@@ -62,7 +62,7 @@ const Basic: React.FC<BasicProps> = () => {
                             <Card.Body className="card-body p-5">
                                 <div className="mb-4 d-flex justify-content-center">
                                     <Link scroll={false} href="/dashboards/sales/">
-                                        <Image src="../../../assets/images/brand-logos/desktop-logo.png" alt="logo" fill className="desktop-logo" style={{ objectFit: "contain" }} />
+                                        <Image src="../../../assets/images/brand-logos/drx-logo.png" alt="logo" fill className="desktop-logo" style={{ objectFit: "contain" }} />
                                     </Link>
                                 </div>
                                 <p className="h5 mb-2 text-center">Sign Up</p>

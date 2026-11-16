@@ -166,42 +166,42 @@ export default function CourseSidebar({ onBackToMainNav }: CourseSidebarProps) {
             <Image
               width={99}
               height={32}
-              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/desktop-logo.png`}
+              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/drx-logo.png`}
               alt="logo"
               className="desktop-logo"
             />
             <Image
               width={30}
               height={24}
-              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/toggle-dark.png`}
+              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/drx-logo.png`}
               alt="logo"
               className="toggle-dark"
             />
             <Image
               width={112}
               height={36}
-              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/desktop-dark.png`}
+              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/drx-logo.png`}
               alt="logo"
               className="desktop-dark"
             />
             <Image
               width={99}
               height={32}
-              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/desktop-white.png`}
+              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/drx-logo.png`}
               alt="logo"
               className="desktop-white"
             />
             <Image
               width={30}
               height={24}
-              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/toggle-logo.png`}
+              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/drx-logo.png`}
               alt="logo"
               className="toggle-logo"
             />
             <Image
               width={30}
               height={24}
-              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/toggle-white.png`}
+              src={`${process.env.NODE_ENV === "production" ? basePath : ""}/assets/images/brand-logos/drx-logo.png`}
               alt="logo"
               className="toggle-white"
             />

@@ -20,7 +20,7 @@ const UnderMaintenance: React.FC<UnderMaintenanceProps> = () => {
                                 <Col xxl={11} xl={10} lg={10} md={12} sm={12} className=" col-12">
                                     <div>
                                         <div className="mb-4"> <Link scroll={false} href="/dashboards/sales/">
-                                            <Image fill src="../../assets/images/brand-logos/toggle-white.png" alt="" className="authentication-brand" /> </Link>
+                                            <Image fill src="../../assets/images/brand-logos/drx-logo.png" alt="" className="authentication-brand" /> </Link>
                                         </div>
                                         <h4 className="mb-2 text-fixed-white fs-2">Under Maintenance</h4>
                                         <p className="mb-5 text-muted text-fixed-white fs-16 op-8">We're currently performing some updates to improve your experience. Please bear with us – we'll be back shortly!</p>

@@ -67,7 +67,7 @@ const PublicHeader = () => {
       <Container fluid>
         <Navbar.Brand as={Link} href="/" scroll={false}>
           <Image
-            src={`${logoPath}/assets/images/brand-logos/logo-dark.png`}
+            src={`${logoPath}/assets/images/brand-logos/drx-logo.png`}
             width={173}
             height={43}
             alt="logo"

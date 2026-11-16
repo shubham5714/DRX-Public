@@ -4,58 +4,30 @@ import { createServerClient } from '@supabase/ssr'
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
-  
-  // Define public routes that don't require authentication
+
+  // Serve the reference landing HTML at the site root, outside the app shell.
+  if (pathname === '/') {
+    const url = request.nextUrl.clone()
+    url.pathname = '/landing-template'
+    return NextResponse.rewrite(url)
+  }
+
+  // Landing is public. Sign-in, sign-up, and password reset stay open so a
+  // session can be created. Every other page requires authentication.
   const publicRoutes = [
-    '/',
+    '/landing-template',
     '/signin',
-    '/authentication',
-    '/authentication/coming-soon',
-    '/authentication/create-password',
-    '/authentication/create-password/create-basic',
-    '/authentication/create-password/create-cover',
-    '/authentication/error',
-    '/authentication/error/401-error',
-    '/authentication/error/404-error',
-    '/authentication/error/500-error',
-    '/authentication/lock-screen',
-    '/authentication/lock-screen/lock-basic',
-    '/authentication/lock-screen/lock-cover',
-    '/authentication/reset-password',
-    '/authentication/reset-password/reset-basic',
-    '/authentication/reset-password/reset-cover',
-    '/authentication/sign-in',
-    '/authentication/sign-in/sign-in-basic',
-    '/authentication/sign-in/sign-in-cover',
     '/authentication/sign-up',
-    '/authentication/sign-up/sign-up-basic',
-    '/authentication/sign-up/sign-up-cover',
-    '/authentication/two-step-verification',
-    '/authentication/two-step-verification/two-step-basic',
-    '/authentication/two-step-verification/two-step-cover',
-    '/authentication/under-maintenance',
-    '/landing',
-    '/coming-soon',
-    '/under-maintenance'
+    '/authentication/reset-password',
   ]
-  
-  // Check if the current path is a public route
-  const isPublicRoute = publicRoutes.some(route => 
-    pathname === route || pathname.startsWith(route + '/')
-  )
 
-  // Courses catalog, course lessons, tracks + pricing are public
-  const isPublicCourseOrPricing =
-    pathname === '/courses' ||
-    pathname.startsWith('/courses/') ||
-    pathname === '/tracks' ||
-    pathname.startsWith('/tracks/') ||
-    pathname === '/learning-paths' ||
-    pathname.startsWith('/learning-paths/') ||
-    pathname === '/pages/pricing' ||
-    pathname.startsWith('/pages/pricing/')
+  const isPublicRoute =
+    pathname === '/' ||
+    publicRoutes.some(
+      (route) => pathname === route || pathname.startsWith(route + '/')
+    )
 
-  // Old learning-paths URLs → Tracks
+  // Old learning-paths URLs → Tracks (still gated; anonymous users then hit sign-in)
   if (
     pathname === '/learning-paths' ||
     pathname.startsWith('/learning-paths/')
@@ -64,14 +36,14 @@ export async function middleware(request: NextRequest) {
     url.pathname = '/tracks'
     return NextResponse.redirect(url)
   }
-  
-  // Skip middleware for public routes, static files, and Next.js internals
-  if (isPublicRoute ||
-      isPublicCourseOrPricing ||
-      pathname.startsWith('/_next/') || 
-      pathname.startsWith('/api/') ||
-      pathname.includes('.') ||
-      pathname === '/favicon.ico') {
+
+  // Skip middleware for the public pages, static files, and Next.js internals
+  if (
+    isPublicRoute ||
+    pathname.startsWith('/_next/') ||
+    pathname.includes('.') ||
+    pathname === '/favicon.ico'
+  ) {
     return NextResponse.next()
   }
   
@@ -131,8 +103,11 @@ export async function middleware(request: NextRequest) {
     // Check if user is authenticated
     const { data: { user }, error } = await supabase.auth.getUser()
     
-    // If no user found, redirect to login
+    // If no user found, block the request
     if (error || !user) {
+      if (pathname.startsWith('/api/')) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      }
       const loginUrl = new URL('/signin', request.url)
       loginUrl.searchParams.set('redirectedFrom', pathname)
       return NextResponse.redirect(loginUrl)
@@ -143,6 +118,9 @@ export async function middleware(request: NextRequest) {
     
   } catch (error) {
     console.error('❌ Middleware authentication error:', error)
+    if (pathname.startsWith('/api/')) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
     const loginUrl = new URL('/signin', request.url)
     loginUrl.searchParams.set('redirectedFrom', pathname)
     return NextResponse.redirect(loginUrl)

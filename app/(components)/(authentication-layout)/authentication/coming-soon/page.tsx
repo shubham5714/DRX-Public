@@ -23,7 +23,7 @@ const ComingSoon: React.FC<ComingSoonProps> = () => {
                                     <div>
                                         <div className="mb-4">
                                             <Link scroll={false} href="/dashboards/sales/">
-                                                <Image width={29} height={32}  src="../../assets/images/brand-logos/toggle-white.png" alt="" className="authentication-brand" />
+                                                <Image width={29} height={32}  src="../../assets/images/brand-logos/drx-logo.png" alt="" className="authentication-brand" />
                                             </Link>
                                         </div>
                                         <h4 className="mb-2 text-fixed-white fs-2">Coming Soon</h4>

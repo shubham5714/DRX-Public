@@ -570,7 +570,7 @@ const Page = () => {
             <div style={{ position: 'absolute', top: '24px', left: '24px', zIndex: 10 }}>
                 <Link scroll={false} href="/">
                     <Image
-                        src={`${logoPath}/assets/images/brand-logos/desktop-white.png`}
+                        src={`${logoPath}/assets/images/brand-logos/drx-logo.png`}
                         alt="logo"
                         width={180}
                         height={36}

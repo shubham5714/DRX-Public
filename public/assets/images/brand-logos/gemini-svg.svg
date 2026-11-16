@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="100%" height="100%">
+  <defs>
+    <!-- Gradient matching the original's light-to-faded-to-light violet tone -->
+    <linearGradient id="drxGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B73FF" />
+      <stop offset="35%" stop-color="#9C89FF" />
+      <stop offset="50%" stop-color="#DCD4FF" stop-opacity="0.25" />
+      <stop offset="65%" stop-color="#9C89FF" />
+      <stop offset="100%" stop-color="#8B73FF" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .brand-text {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 84px;
+      font-weight: 700;
+      fill: url(#drxGradient);
+      letter-spacing: -2px;
+    }
+  </style>
+
+  <!-- Background left transparent/clean just like the uploaded SVG -->
+  <text x="35" y="92" class="brand-text">DRX</text>
+</svg>
