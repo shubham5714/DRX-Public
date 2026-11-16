@@ -1,0 +1,113 @@
+"use client"
+
+import React from "react"
+import { ProgressBar } from "react-bootstrap"
+
+export type CourseOutlineSection = {
+  id: string
+  title: string
+  level: 0 | 1
+  paidOnly?: boolean
+  premiumPreviewSrc?: string
+}
+
+type Props = {
+  sections: readonly CourseOutlineSection[]
+  activeSectionId: string
+  readingPercent: number
+  hasPaidAccess?: boolean
+}
+
+export function TopicOnPageNav({
+  sections,
+  activeSectionId,
+  readingPercent,
+  hasPaidAccess = true,
+}: Props) {
+  if (sections.length === 0) return null
+
+  const scrollTo = (id: string, title: string) => {
+    const scrollEl = (el: HTMLElement) => {
+      el.style.scrollMarginTop = el.style.scrollMarginTop || "6.5rem"
+      el.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+
+    const byId = document.getElementById(id)
+    if (byId) {
+      scrollEl(byId)
+      return
+    }
+    const byDataId = document.querySelector(
+      `[data-id="${CSS.escape(id)}"]`
+    ) as HTMLElement | null
+    if (byDataId) {
+      scrollEl(byDataId)
+      return
+    }
+
+    // Last resort: match heading text (covers id mismatches from id-less JSON).
+    const needle = title.trim().toLowerCase()
+    if (!needle) return
+    const headings = document.querySelectorAll(
+      ".course-blocknote-editor h1, .course-blocknote-editor h2, .course-blocknote-editor h3, .course-blocknote-editor h4"
+    )
+    for (const heading of headings) {
+      if ((heading.textContent || "").trim().toLowerCase() === needle) {
+        scrollEl(heading as HTMLElement)
+        return
+      }
+    }
+  }
+
+  return (
+    <div className="topic-on-page-nav h-100">
+      <h2 id="topic-on-page-nav-heading" className="fw-semibold mb-3 topic-on-page-nav__title">
+        On this page
+      </h2>
+
+      <section className="topic-on-page-nav__reading mb-4" aria-label="Reading progress">
+        <div className="d-flex align-items-center justify-content-between mb-2">
+          <div className="d-flex align-items-center gap-2 fw-semibold">
+            <i className="ri-book-open-line text-primary" aria-hidden />
+            <span>Reading progress</span>
+          </div>
+          <span className="text-muted">{readingPercent}%</span>
+        </div>
+        <ProgressBar now={readingPercent} style={{ height: 6 }} variant="primary" />
+      </section>
+
+      <div className="position-relative topic-on-page-nav__outline">
+        <div
+          className="position-absolute top-0 bottom-0 end-0 border-end opacity-50"
+          style={{ width: 1 }}
+          aria-hidden
+        />
+        <nav className="pe-3" aria-labelledby="topic-on-page-nav-heading">
+          <ul className="list-unstyled mb-0">
+            {sections.map((s) => {
+              const active = activeSectionId === s.id
+              const indent = s.level > 0 ? "ps-3" : ""
+              const lockedNav = Boolean(s.paidOnly && !hasPaidAccess)
+              return (
+                <li key={s.id} className={`mb-2 ${indent}`}>
+                  <button
+                    type="button"
+                    className={`btn btn-link text-start p-0 text-decoration-none lh-sm w-100 d-inline-flex align-items-start gap-1 ${
+                      active ? "text-primary fw-semibold" : "text-muted"
+                    }`}
+                    onClick={() => scrollTo(s.id, s.title)}
+                  >
+                    <span className="flex-grow-1">{s.title}</span>
+                    {lockedNav ? (
+                      <i className="ri-lock-2-fill flex-shrink-0 mt-1 opacity-75" title="Premium" aria-hidden />
+                    ) : null}
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  )
+}
