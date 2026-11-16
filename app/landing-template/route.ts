@@ -42,9 +42,35 @@ button[hidden],
   object-fit:contain!important;
   object-position:center!important;
 }
+[data-framer-name="Section Features"] [data-framer-name="Header Left"] .framer-styles-preset-ywza5g,
+[data-framer-name="Section Features"] [data-framer-name="Header Left"] a[data-framer-name=Primary],
+[data-framer-name="Section Features"] [data-framer-name="Header Left"] a[data-framer-name="Primary"]{
+  display:none!important;
+}
 [data-framer-name="Social Wrapper"] a,
 [data-framer-name="Social Wrapper"] div[data-framer-name=Desktop]{pointer-events:none!important;cursor:default!important}
+nav a[data-drx-nav-noop]{cursor:default!important}
 </style>`
+
+/** Products menu item is display-only (no navigation). */
+const NAV_SCRIPT = `<script id="drx-nav-script">
+(function(){
+  function arm(){
+    var links=document.querySelectorAll("nav a[data-drx-nav-noop]");
+    for(var i=0;i<links.length;i++){
+      links[i].addEventListener("click", function(ev){
+        ev.preventDefault();
+        ev.stopPropagation();
+      });
+    }
+  }
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",arm);
+  }else{
+    arm();
+  }
+})();
+</script>`
 
 /**
  * Framer export ships ticker tracks at translateX(0) with empty runtime scripts,
@@ -562,7 +588,7 @@ export async function GET() {
       )
     : `${PRODUCTION_HIDE_STYLE}${MARQUEE_STYLE}${APPEAR_STYLE}${FAQ_STYLE}${raw}`
 
-  const bootScripts = `${MARQUEE_SCRIPT}${APPEAR_SCRIPT}${BENEFITS_SCRIPT}${FAQ_SCRIPT}`
+  const bootScripts = `${NAV_SCRIPT}${MARQUEE_SCRIPT}${APPEAR_SCRIPT}${BENEFITS_SCRIPT}${FAQ_SCRIPT}`
   if (html.includes("</body>")) {
     html = html.replace("</body>", `${bootScripts}</body>`)
   } else if (html.includes("</html>")) {
