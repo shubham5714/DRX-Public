@@ -104,6 +104,47 @@ nav a[data-drx-nav-noop]{cursor:default!important}
 [data-framer-name="Section Features"] [data-framer-name="Bento Grid"]{
   width:100%!important;
 }
+/* Feature cards: original bg image + custom SVG overlay only */
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-pipeline-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-unify-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tim-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-fed-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t){
+  position:relative!important;
+  overflow:hidden!important;
+}
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-pipeline-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-unify-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tim-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-fed-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t) [data-framer-background-image-wrapper]{
+  z-index:0!important;
+}
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-pipeline-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-unify-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tim-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-fed-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t) [data-framer-background-image-wrapper] img{
+  object-fit:cover!important;
+  width:100%!important;
+  height:100%!important;
+}
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"] .drx-feature-overlay{
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  pointer-events:none!important;
+  padding:8px!important;
+}
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"] .drx-feature-overlay svg{
+  width:100%!important;
+  height:100%!important;
+  max-height:100%!important;
+  display:block!important;
+}
 [data-framer-name="Section Features"] [data-framer-name="Bentow Row"]{
   display:grid!important;
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
