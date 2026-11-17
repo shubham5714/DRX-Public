@@ -407,23 +407,62 @@ const APPEAR_STYLE = `<style id="drx-scroll-appear">
   filter:blur(0);
   transform:none;
 }
-/* Benefits tabs: hide inactive copy; fade active copy/visuals */
+/* Benefits tabs: centered title when idle; subtitle collapses then fades in when active */
+[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Active"],
+[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Inactive"]{
+  cursor:pointer!important;
+  height:auto!important;
+  min-height:96px!important;
+  overflow:visible!important;
+  align-items:center!important;
+}
+[data-framer-name="Section Benefits"] [data-framer-name="Feature section"]{
+  overflow:visible!important;
+  min-width:0!important;
+}
+[data-framer-name="Section Benefits"] [data-framer-name="Feature title"],
+[data-framer-name="Section Benefits"] [data-framer-name="Feature title"] h3{
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:unset!important;
+  line-height:1.25em!important;
+}
+[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Inactive"] [data-framer-name="Feature section"]{
+  place-content:center!important;
+  justify-content:center!important;
+}
+[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Active"] [data-framer-name="Feature section"]{
+  place-content:flex-start center!important;
+  justify-content:flex-start!important;
+}
 .drx-benefit-desc{
-  transition:opacity .45s ease!important;
+  width:100%!important;
   position:relative!important;
   top:auto!important;
   left:auto!important;
-  width:100%!important;
   transform:none!important;
+  transition:opacity .4s ease,margin .35s ease!important;
 }
 .drx-benefit-desc.is-off{
   opacity:0!important;
   visibility:hidden!important;
   pointer-events:none!important;
+  height:0!important;
+  max-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
 }
 .drx-benefit-desc.is-on{
   opacity:1!important;
   visibility:visible!important;
+  height:auto!important;
+  max-height:320px!important;
+  overflow:visible!important;
+}
+.drx-benefit-desc.is-on [data-framer-name="Feature description"],
+.drx-benefit-desc.is-on .framer-1hju62x{
+  opacity:1!important;
 }
 [data-framer-name="Section Benefits"] [data-framer-name="Visual Wrapper"],
 [data-framer-name="Section Benefits"] [data-framer-name="Benefit Tab Right"]{
@@ -448,8 +487,6 @@ const APPEAR_STYLE = `<style id="drx-scroll-appear">
   pointer-events:auto!important;
   z-index:2!important;
 }
-[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Active"],
-[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Inactive"]{cursor:pointer!important}
 @media (prefers-reduced-motion:reduce){
   .drx-reveal-word,.drx-reveal-word.drx-reveal-word-in,
   .drx-reveal-line,.drx-reveal-line.drx-reveal-line-in,
@@ -627,22 +664,45 @@ const BENEFITS_SCRIPT = `<script id="drx-benefits-tabs-script">
   function setDesc(desc, on, animate){
     if(!desc)return;
     prepDesc(desc);
+    // Keep subtitle out of layout when idle so the title stays vertically centered
+    desc.style.position="relative";
+    desc.style.top="auto";
+    desc.style.left="auto";
+    desc.style.transform="none";
+    desc.style.width="100%";
+    var copy=desc.querySelector('[data-framer-name="Feature description"],.framer-1hju62x,p');
     if(on){
-      desc.style.transform="none";
-      desc.style.position="relative";
-      desc.style.top="auto";
       desc.classList.remove("is-off");
       if(animate){
         desc.classList.remove("is-on");
-        // force reflow then fade in
         void desc.offsetWidth;
         desc.classList.add("is-on");
       }else{
         desc.classList.add("is-on");
       }
+      desc.style.height="auto";
+      desc.style.maxHeight="";
+      desc.style.opacity="1";
+      desc.style.visibility="visible";
+      desc.style.overflow="visible";
+      if(copy){
+        copy.style.opacity="1";
+        copy.style.transform="none";
+        copy.style.visibility="visible";
+      }
     }else{
       desc.classList.remove("is-on");
       desc.classList.add("is-off");
+      desc.style.height="0px";
+      desc.style.maxHeight="0px";
+      desc.style.opacity="0";
+      desc.style.visibility="hidden";
+      desc.style.overflow="hidden";
+      desc.style.margin="0px";
+      desc.style.padding="0px";
+      if(copy){
+        copy.style.opacity="0";
+      }
     }
   }
   function setTabState(tab, active, animate){
@@ -650,15 +710,18 @@ const BENEFITS_SCRIPT = `<script id="drx-benefits-tabs-script">
     tab.setAttribute("data-framer-name", active?ACTIVE_NAME:INACTIVE_NAME);
     tab.classList.remove(ACTIVE_VARIANT,INACTIVE_VARIANT);
     tab.classList.add(active?ACTIVE_VARIANT:INACTIVE_VARIANT);
-    var desc=tab.querySelector('[data-framer-name=description],.framer-31togp');
+    var desc=tab.querySelector('[data-framer-name=description]');
+    if(!desc)desc=tab.querySelector(".framer-31togp");
     setDesc(desc, active, animate&&active);
   }
   function showVisual(index, animate){
     var panels=visuals();
+    // More tabs than visual panels: reuse the last panel for extras
+    var visualIndex=Math.min(index, Math.max(panels.length-1, 0));
     for(var i=0;i<panels.length;i++){
       if(!panels[i])continue;
       prepVisual(panels[i]);
-      var on=i===index;
+      var on=i===visualIndex;
       panels[i].style.zIndex=on?"2":"1";
       panels[i].style.pointerEvents=on?"auto":"none";
       panels[i].style.opacity=on?"1":"0";
