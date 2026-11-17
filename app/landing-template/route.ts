@@ -26,7 +26,8 @@ button[hidden],
 [data-framer-name="Social Wrapper"] a[href*="discord"],
 [data-framer-name="Social Wrapper"] a[href*="github"],
 [data-framer-name="Section Pricing"],
-#pricing{display:none!important;visibility:hidden!important;pointer-events:none!important}
+#pricing,
+[data-framer-name="G2 Rating"]{display:none!important;visibility:hidden!important;pointer-events:none!important}
 [data-framer-name="Footer Logo"]{
   width:119px!important;
   height:30px!important;
@@ -540,6 +541,57 @@ const APPEAR_STYLE = `<style id="drx-scroll-appear">
   visibility:visible!important;
   pointer-events:auto!important;
   z-index:2!important;
+}
+/* Mobile: stack tabs above the per-tab visual (Framer desktop row has no mobile variant). */
+@media (max-width:809.98px){
+  [data-framer-name="Section Benefits"] [data-framer-name="Tab1 / Desktop"]{
+    flex-direction:column!important;
+    flex-wrap:nowrap!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    gap:20px!important;
+    height:auto!important;
+    width:100%!important;
+  }
+  [data-framer-name="Section Benefits"] [data-framer-name="Benefit Tab Left"],
+  [data-framer-name="Section Benefits"] [data-framer-name="Benefit Tab Right"]{
+    width:100%!important;
+    max-width:100%!important;
+    flex:none!important;
+    align-self:stretch!important;
+  }
+  [data-framer-name="Section Benefits"] [data-framer-name="Benefit Tab Left"]{
+    order:1!important;
+  }
+  [data-framer-name="Section Benefits"] [data-framer-name="Benefit Tab Right"]{
+    order:2!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:16px!important;
+    overflow:visible!important;
+  }
+  [data-framer-name="Section Benefits"] [data-framer-name="Visual Wrapper"]{
+    width:100%!important;
+    height:auto!important;
+    min-height:240px!important;
+    flex:none!important;
+    position:relative!important;
+    overflow:hidden!important;
+  }
+  /* Active panel in-flow so the stack gets real height; inactive stay overlaid/hidden */
+  [data-framer-name="Section Benefits"] .drx-benefit-visual.is-on{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:240px!important;
+  }
+  [data-framer-name="Section Benefits"] .drx-benefit-visual.is-off{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+  }
 }
 @media (prefers-reduced-motion:reduce){
   .drx-reveal-word,.drx-reveal-word.drx-reveal-word-in,
