@@ -15,11 +15,6 @@ const PRODUCTION_HIDE_STYLE = `<style id="drx-production-hide">
 [data-framer-name="Big Logo"],
 [data-framer-name="Dropdown Wrap"],
 [data-framer-name="Right Icon Wrap"],
-[data-framer-name="CTA Wrapper"],
-[data-framer-name="CTA Wrapper"] a[data-framer-name=Primary],
-[data-framer-name="CTA Wrapper"] a[data-framer-name="Primary"],
-[data-framer-name="CTA Wrapper"] a[data-framer-name=Secondary],
-[data-framer-name="CTA Wrapper"] a[data-framer-name="Secondary"],
 a[data-framer-name=Primary][hidden],
 a[data-framer-name="Primary"][hidden],
 button[hidden],
@@ -28,6 +23,60 @@ button[hidden],
 [data-framer-name="Section Pricing"],
 #pricing,
 [data-framer-name="G2 Rating"]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+/* Hero CTA: hide Start for free always; show Book a Demo only on mobile above trusted logos */
+[data-framer-name="CTA Wrapper"] a[data-framer-name=Primary],
+[data-framer-name="CTA Wrapper"] a[data-framer-name="Primary"]{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+@media (min-width:810px){
+  [data-framer-name="CTA Wrapper"]{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
+@media (max-width:809.98px){
+  [data-framer-name="CTA Wrapper"]{
+    display:flex!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    flex-direction:row!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    align-items:center!important;
+    align-self:center!important;
+    width:100%!important;
+    max-width:100%!important;
+    gap:12px!important;
+    margin:0 auto 8px!important;
+  }
+  /* Primary wrapper stays full-width even when the link is hidden — remove it */
+  [data-framer-name="CTA Wrapper"] :has(> a[data-framer-name=Primary]),
+  [data-framer-name="CTA Wrapper"] :has(> a[data-framer-name="Primary"]){
+    display:none!important;
+  }
+  /* Secondary wrapper was width:100%, so the button sat left — shrink-wrap + center */
+  [data-framer-name="CTA Wrapper"] :has(> a[data-framer-name=Secondary]),
+  [data-framer-name="CTA Wrapper"] :has(> a[data-framer-name="Secondary"]){
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    width:auto!important;
+    max-width:100%!important;
+    flex:0 0 auto!important;
+    margin:0 auto!important;
+  }
+  [data-framer-name="CTA Wrapper"] a[data-framer-name=Secondary],
+  [data-framer-name="CTA Wrapper"] a[data-framer-name="Secondary"]{
+    display:flex!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
 [data-framer-name="Footer Logo"]{
   width:119px!important;
   height:30px!important;
