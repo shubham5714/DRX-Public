@@ -42,14 +42,40 @@ button[hidden],
   object-fit:contain!important;
   object-position:center!important;
 }
-[data-framer-name="Section Features"] [data-framer-name="Header Left"] .framer-styles-preset-ywza5g,
-[data-framer-name="Section Features"] [data-framer-name="Header Left"] a[data-framer-name=Primary],
-[data-framer-name="Section Features"] [data-framer-name="Header Left"] a[data-framer-name="Primary"]{
+[data-framer-name="Section Workflow"] [data-framer-name="Header Left"] .framer-styles-preset-ywza5g,
+[data-framer-name="Section Workflow"] [data-framer-name="Header Left"] a[data-framer-name=Primary],
+[data-framer-name="Section Workflow"] [data-framer-name="Header Left"] a[data-framer-name="Primary"]{
   display:none!important;
 }
 [data-framer-name="Social Wrapper"] a,
 [data-framer-name="Social Wrapper"] div[data-framer-name=Desktop]{pointer-events:none!important;cursor:default!important}
 nav a[data-drx-nav-noop]{cursor:default!important}
+/* Features (former Use Cases): 14 cards in 2-column rows; reuse visuals until per-case assets arrive */
+[data-framer-name="Section Features"] [data-framer-name="Bento Grid"]{
+  width:100%!important;
+}
+[data-framer-name="Section Features"] [data-framer-name="Bentow Row"]{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:16px!important;
+  width:100%!important;
+  height:auto!important;
+  align-items:stretch!important;
+}
+[data-framer-name="Section Features"] [data-framer-name="Bento Card"]{
+  width:100%!important;
+  height:auto!important;
+  min-height:220px!important;
+}
+[data-framer-name="Section Features"] [data-framer-name="Feature title"] h3,
+[data-framer-name="Section Features"] [data-framer-name="Feature description"] p{
+  white-space:normal!important;
+}
+@media (max-width:809.98px){
+  [data-framer-name="Section Features"] [data-framer-name="Bentow Row"]{
+    grid-template-columns:1fr!important;
+  }
+}
 /* Framer mobile variants were not exported; adapt desktop nav/footer ourselves. */
 @media (max-width:1015.98px){
   nav.framer-LVVZm,
@@ -407,61 +433,89 @@ const APPEAR_STYLE = `<style id="drx-scroll-appear">
   filter:blur(0);
   transform:none;
 }
-/* Benefits tabs: centered title when idle; subtitle collapses then fades in when active */
+/* Benefits tabs: equal flex wrappers were crushing gaps; size to content instead */
+[data-framer-name="Section Benefits"] [data-framer-name="Benefit Tab Left"]{
+  gap:12px!important;
+  height:auto!important;
+  align-self:flex-start!important;
+  align-items:stretch!important;
+}
+[data-framer-name="Section Benefits"] [data-framer-name="Benefit Tab Left"]>[class*="-container"]{
+  flex:none!important;
+  height:auto!important;
+  width:100%!important;
+}
+/* Icon stays vertically centered; title+subtitle grow as one block */
 [data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Active"],
 [data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Inactive"]{
   cursor:pointer!important;
   height:auto!important;
-  min-height:96px!important;
-  overflow:visible!important;
+  min-height:88px!important;
+  overflow:hidden!important;
   align-items:center!important;
+  place-content:center!important;
+  transition:min-height .35s ease!important;
 }
 [data-framer-name="Section Benefits"] [data-framer-name="Feature section"]{
   overflow:visible!important;
   min-width:0!important;
+  gap:8px!important;
+  place-content:center flex-start!important;
+  justify-content:center!important;
+}
+[data-framer-name="Section Benefits"] [data-framer-name="Feature title"]{
+  transition:transform .35s cubic-bezier(.22,1,.36,1)!important;
+  transform:translateY(0)!important;
+}
+[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Active"] [data-framer-name="Feature title"]{
+  transform:translateY(-2px)!important;
 }
 [data-framer-name="Section Benefits"] [data-framer-name="Feature title"],
 [data-framer-name="Section Benefits"] [data-framer-name="Feature title"] h3{
   white-space:normal!important;
   overflow:visible!important;
   text-overflow:unset!important;
-  line-height:1.25em!important;
+  line-height:1.3em!important;
 }
-[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Inactive"] [data-framer-name="Feature section"]{
-  place-content:center!important;
-  justify-content:center!important;
-}
-[data-framer-name="Section Benefits"] [data-framer-name="Desktop - Tab Link Active"] [data-framer-name="Feature section"]{
-  place-content:flex-start center!important;
-  justify-content:flex-start!important;
-}
+/* Smooth collapse/expand + fade for subtitle */
 .drx-benefit-desc{
+  display:grid!important;
   width:100%!important;
   position:relative!important;
   top:auto!important;
   left:auto!important;
   transform:none!important;
-  transition:opacity .4s ease,margin .35s ease!important;
-}
-.drx-benefit-desc.is-off{
+  grid-template-rows:0fr!important;
   opacity:0!important;
-  visibility:hidden!important;
-  pointer-events:none!important;
-  height:0!important;
-  max-height:0!important;
-  margin:0!important;
-  padding:0!important;
+  transition:grid-template-rows .4s cubic-bezier(.22,1,.36,1),opacity .35s ease!important;
+}
+.drx-benefit-desc>*{
+  min-height:0!important;
   overflow:hidden!important;
 }
+.drx-benefit-desc.is-off{
+  grid-template-rows:0fr!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
 .drx-benefit-desc.is-on{
+  grid-template-rows:1fr!important;
   opacity:1!important;
-  visibility:visible!important;
-  height:auto!important;
-  max-height:320px!important;
-  overflow:visible!important;
+  pointer-events:auto!important;
+}
+.drx-benefit-desc [data-framer-name="Feature description"],
+.drx-benefit-desc .framer-1hju62x,
+.drx-benefit-desc p{
+  transition:opacity .35s ease!important;
+}
+.drx-benefit-desc.is-off [data-framer-name="Feature description"],
+.drx-benefit-desc.is-off .framer-1hju62x,
+.drx-benefit-desc.is-off p{
+  opacity:0!important;
 }
 .drx-benefit-desc.is-on [data-framer-name="Feature description"],
-.drx-benefit-desc.is-on .framer-1hju62x{
+.drx-benefit-desc.is-on .framer-1hju62x,
+.drx-benefit-desc.is-on p{
   opacity:1!important;
 }
 [data-framer-name="Section Benefits"] [data-framer-name="Visual Wrapper"],
@@ -500,8 +554,8 @@ const APPEAR_STYLE = `<style id="drx-scroll-appear">
 const APPEAR_SCRIPT = `<script id="drx-scroll-appear-script">
 (function(){
   var TITLE_SECTIONS=[
+    "Section Workflow",
     "Section Features",
-    "Section Use Cases",
     "Section Benefits",
     "Section Integrations",
     "Section Testimonials",
@@ -664,13 +718,23 @@ const BENEFITS_SCRIPT = `<script id="drx-benefits-tabs-script">
   function setDesc(desc, on, animate){
     if(!desc)return;
     prepDesc(desc);
-    // Keep subtitle out of layout when idle so the title stays vertically centered
+    // Cancel Framer absolute/translateY that fights the expand animation
     desc.style.position="relative";
     desc.style.top="auto";
     desc.style.left="auto";
     desc.style.transform="none";
     desc.style.width="100%";
+    desc.style.height="";
+    desc.style.maxHeight="";
+    desc.style.margin="";
+    desc.style.padding="";
+    desc.style.visibility="";
+    desc.style.overflow="";
     var copy=desc.querySelector('[data-framer-name="Feature description"],.framer-1hju62x,p');
+    if(copy){
+      copy.style.transform="none";
+      copy.style.visibility="";
+    }
     if(on){
       desc.classList.remove("is-off");
       if(animate){
@@ -680,29 +744,11 @@ const BENEFITS_SCRIPT = `<script id="drx-benefits-tabs-script">
       }else{
         desc.classList.add("is-on");
       }
-      desc.style.height="auto";
-      desc.style.maxHeight="";
-      desc.style.opacity="1";
-      desc.style.visibility="visible";
-      desc.style.overflow="visible";
-      if(copy){
-        copy.style.opacity="1";
-        copy.style.transform="none";
-        copy.style.visibility="visible";
-      }
+      if(copy)copy.style.opacity="1";
     }else{
       desc.classList.remove("is-on");
       desc.classList.add("is-off");
-      desc.style.height="0px";
-      desc.style.maxHeight="0px";
-      desc.style.opacity="0";
-      desc.style.visibility="hidden";
-      desc.style.overflow="hidden";
-      desc.style.margin="0px";
-      desc.style.padding="0px";
-      if(copy){
-        copy.style.opacity="0";
-      }
+      if(copy)copy.style.opacity="0";
     }
   }
   function setTabState(tab, active, animate){
