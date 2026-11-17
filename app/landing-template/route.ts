@@ -882,6 +882,153 @@ const BENEFITS_SCRIPT = `<script id="drx-benefits-tabs-script">
 
 /** FAQ accordion: Framer runtime is empty, so toggle answer height + icon rotate. */
 const FAQ_STYLE = `<style id="drx-faq-accordion">
+/* Keep Getting started only — hide Collaboration / Support tabs AND their
+   Framer flex wrappers (flex:1 0 0). Hiding only In Active left empty columns,
+   which pinned Getting started to the left. */
+[data-framer-name="Section FAQ"] [data-framer-name="In Active"],
+[data-framer-name="Section FAQ"] [data-framer-name="Category"]>:has([data-framer-name="In Active"]),
+[data-framer-name="Section FAQ"] [data-framer-name=Category]>:has([data-framer-name="In Active"]){
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  flex:none!important;
+  width:0!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+/* Active tab wrapper: size to content so justify-content:center can center it */
+[data-framer-name="Section FAQ"] [data-framer-name="Category"]>:has([data-framer-name="Active"]),
+[data-framer-name="Section FAQ"] [data-framer-name="Category"]>:has([data-framer-name=Active]),
+[data-framer-name="Section FAQ"] [data-framer-name=Category]>:has([data-framer-name="Active"]),
+[data-framer-name="Section FAQ"] [data-framer-name=Category]>:has([data-framer-name=Active]){
+  display:flex!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  max-width:100%!important;
+  min-width:0!important;
+  justify-content:center!important;
+  align-items:center!important;
+}
+/* Tab row: Framer active style (24px gap + purple glow). Center group; grow with tabs.
+   Mobile: Category must be width:100% + justify-content:center — fixed 558px row was off-center. */
+[data-framer-name="Section FAQ"] .framer-z11nfj-container,
+[data-framer-name="Section FAQ"] [data-framer-name="Desktop - Getting Started"],
+[data-framer-name="Section FAQ"] .framer-1x4jug6{
+  display:flex!important;
+  flex-direction:column!important;
+  width:100%!important;
+  max-width:100%!important;
+  overflow:visible!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  place-content:unset!important;
+  box-sizing:border-box!important;
+}
+[data-framer-name="Section FAQ"] [data-framer-name="Category"],
+[data-framer-name="Section FAQ"] [data-framer-name=Category],
+[data-framer-name="Section FAQ"] .framer-1a1riar{
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  margin:0 auto!important;
+  justify-content:center!important;
+  align-items:stretch!important;
+  place-content:center!important;
+  gap:0!important;
+  overflow:visible!important;
+  box-sizing:border-box!important;
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+}
+[data-framer-name="Section FAQ"] [data-framer-name="Active"],
+[data-framer-name="Section FAQ"] [data-framer-name=Active],
+[data-framer-name="Section FAQ"] [data-framer-name="In Active"]{
+  display:flex!important;
+  flex-direction:column!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:max-content!important;
+  max-width:100%!important;
+  margin:0!important;
+  align-items:center!important;
+  justify-content:center!important;
+  align-self:center!important;
+  gap:24px!important;
+  padding:0 16px!important;
+  box-sizing:border-box!important;
+  overflow:visible!important;
+  cursor:pointer!important;
+}
+[data-framer-name="Section FAQ"] [data-framer-name="Title"],
+[data-framer-name="Section FAQ"] [data-framer-name=Title]{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  flex:none!important;
+  width:auto!important;
+  white-space:pre!important;
+  overflow:visible!important;
+}
+[data-framer-name="Section FAQ"] [data-framer-name="Title"] p,
+[data-framer-name="Section FAQ"] [data-framer-name=Title] p{
+  white-space:pre!important;
+  overflow:visible!important;
+  text-overflow:unset!important;
+  text-align:center!important;
+  width:auto!important;
+  margin:0!important;
+}
+/* Preserve purple active underline + glow */
+[data-framer-name="Section FAQ"] [data-framer-name="Active"] [data-framer-name="Underline"],
+[data-framer-name="Section FAQ"] [data-framer-name=Active] [data-framer-name=Underline],
+[data-framer-name="Section FAQ"] [data-framer-name=Active] [data-framer-name="Underline"]{
+  flex:none!important;
+  align-self:stretch!important;
+  width:100%!important;
+  height:2px!important;
+  background-color:rgb(122,95,255)!important;
+  box-shadow:rgb(122,95,255) 0 -4px 18px 3px!important;
+  overflow:hidden!important;
+}
+[data-framer-name="Section FAQ"] [data-framer-name="In Active"] [data-framer-name="Underline"],
+[data-framer-name="Section FAQ"] [data-framer-name="In Active"] [data-framer-name=Underline]{
+  flex:none!important;
+  align-self:stretch!important;
+  width:100%!important;
+  height:2px!important;
+}
+@media (max-width:1015.98px){
+  [data-framer-name="Section FAQ"] .framer-z11nfj-container,
+  [data-framer-name="Section FAQ"] [data-framer-name="Desktop - Getting Started"],
+  [data-framer-name="Section FAQ"] .framer-1x4jug6,
+  [data-framer-name="Section FAQ"] [data-framer-name="Accordion Wrapper"]{
+    width:100%!important;
+    max-width:100%!important;
+    align-items:center!important;
+    box-sizing:border-box!important;
+  }
+  [data-framer-name="Section FAQ"] [data-framer-name="Category"],
+  [data-framer-name="Section FAQ"] [data-framer-name=Category],
+  [data-framer-name="Section FAQ"] .framer-1a1riar{
+    width:100%!important;
+    max-width:100%!important;
+    justify-content:center!important;
+  }
+  [data-framer-name="Section FAQ"] [data-framer-name="Active"],
+  [data-framer-name="Section FAQ"] [data-framer-name=Active],
+  [data-framer-name="Section FAQ"] [data-framer-name="In Active"]{
+    padding:0 12px!important;
+    gap:24px!important;
+    flex:0 0 auto!important;
+  }
+}
 [data-framer-name="Section FAQ"] [data-drx-faq-item] [data-drx-faq-panel]{
   overflow:hidden;
   transition:height .32s ease;
@@ -901,8 +1048,99 @@ const FAQ_STYLE = `<style id="drx-faq-accordion">
 
 const FAQ_SCRIPT = `<script id="drx-faq-accordion-script">
 (function(){
+  function faqRoot(){
+    return document.querySelector('[data-framer-name="Section FAQ"]');
+  }
+  function setImp(el, prop, val){
+    if(el)el.style.setProperty(prop, val, "important");
+  }
+  /** Framer keeps a 558px left-aligned Category; force a full-width centered tab row. */
+  function centerFaqTabs(){
+    var root=faqRoot();
+    if(!root)return;
+    var desktop=root.querySelector('[data-framer-name="Desktop - Getting Started"]');
+    var category=root.querySelector('[data-framer-name="Category"],[data-framer-name=Category]');
+    if(desktop){
+      setImp(desktop,"display","flex");
+      setImp(desktop,"flex-direction","column");
+      setImp(desktop,"align-items","center");
+      setImp(desktop,"justify-content","flex-start");
+      setImp(desktop,"width","100%");
+      setImp(desktop,"max-width","100%");
+      setImp(desktop,"overflow","visible");
+      if(desktop.parentElement){
+        setImp(desktop.parentElement,"width","100%");
+        setImp(desktop.parentElement,"max-width","100%");
+        setImp(desktop.parentElement,"display","flex");
+        setImp(desktop.parentElement,"flex-direction","column");
+        setImp(desktop.parentElement,"align-items","center");
+      }
+    }
+    if(category){
+      setImp(category,"display","flex");
+      setImp(category,"flex-direction","row");
+      setImp(category,"flex-wrap","nowrap");
+      setImp(category,"justify-content","center");
+      setImp(category,"align-items","stretch");
+      setImp(category,"width","100%");
+      setImp(category,"max-width","100%");
+      setImp(category,"min-width","0");
+      setImp(category,"margin","0 auto");
+      setImp(category,"gap","0");
+      setImp(category,"position","relative");
+      setImp(category,"left","auto");
+      setImp(category,"right","auto");
+      setImp(category,"transform","none");
+      setImp(category,"align-self","stretch");
+      // Direct children are Framer wrappers with flex:1 — hide inactive wrappers,
+      // shrink-wrap the active one so the row can truly center.
+      var wrappers=category.children;
+      for(var w=0;w<wrappers.length;w++){
+        var wrap=wrappers[w];
+        var inactive=wrap.querySelector('[data-framer-name="In Active"]');
+        var activeTab=wrap.querySelector('[data-framer-name="Active"],[data-framer-name=Active]');
+        if(inactive && !activeTab){
+          setImp(wrap,"display","none");
+          setImp(wrap,"flex","0 0 0");
+          setImp(wrap,"width","0");
+          setImp(inactive,"display","none");
+          continue;
+        }
+        setImp(wrap,"display","flex");
+        setImp(wrap,"flex","0 0 auto");
+        setImp(wrap,"width","auto");
+        setImp(wrap,"max-width","100%");
+        setImp(wrap,"justify-content","center");
+        setImp(wrap,"align-items","center");
+      }
+    }
+    var tabs=root.querySelectorAll('[data-framer-name="Active"],[data-framer-name=Active],[data-framer-name="In Active"]');
+    for(var t=0;t<tabs.length;t++){
+      var tab=tabs[t];
+      if(tab.getAttribute("data-framer-name")==="In Active"){
+        setImp(tab,"display","none");
+        continue;
+      }
+      setImp(tab,"display","flex");
+      setImp(tab,"flex-direction","column");
+      setImp(tab,"flex","0 0 auto");
+      setImp(tab,"width","auto");
+      setImp(tab,"max-width","100%");
+      setImp(tab,"margin","0");
+      setImp(tab,"align-items","center");
+      setImp(tab,"justify-content","center");
+      setImp(tab,"align-self","center");
+      setImp(tab,"gap","24px");
+    }
+    var accordion=root.querySelector('[data-framer-name="Accordion Wrapper"]');
+    if(accordion){
+      setImp(accordion,"width","100%");
+      setImp(accordion,"max-width","100%");
+      setImp(accordion,"align-self","stretch");
+    }
+  }
   function items(){
-    var root=document.querySelector('[data-framer-name="Section FAQ"]');
+    var root=faqRoot();
     if(!root)return [];
     return Array.prototype.slice.call(
       root.querySelectorAll('[class*="force-styles"][class*="-item-"]')
@@ -950,7 +1188,7 @@ const FAQ_SCRIPT = `<script id="drx-faq-accordion-script">
       panel.style.height="0px";
     }
   }
-  function run(){
+  function runAccordion(){
     var list=items();
     if(!list.length)return;
     for(var i=0;i<list.length;i++){
@@ -963,7 +1201,6 @@ const FAQ_SCRIPT = `<script id="drx-faq-accordion-script">
           ev.preventDefault();
           ev.stopPropagation();
           var open=!item.classList.contains("is-open");
-          // Accordion: close others
           for(var j=0;j<list.length;j++){
             if(list[j]!==item)setOpen(list[j], false, true);
           }
@@ -978,11 +1215,20 @@ const FAQ_SCRIPT = `<script id="drx-faq-accordion-script">
       })(list[i]);
     }
   }
+  function run(){
+    centerFaqTabs();
+    runAccordion();
+  }
   if(document.readyState==="loading"){
     document.addEventListener("DOMContentLoaded",run);
   }else{
     run();
   }
+  window.addEventListener("resize", centerFaqTabs);
+  // Framer/layout settles after first paint
+  setTimeout(centerFaqTabs, 0);
+  setTimeout(centerFaqTabs, 250);
+  setTimeout(centerFaqTabs, 1000);
 })();
 </script>`
 
