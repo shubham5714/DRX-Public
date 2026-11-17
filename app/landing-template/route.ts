@@ -97,6 +97,239 @@ button[hidden],
 [data-framer-name="Section Workflow"] [data-framer-name="Header Left"] a[data-framer-name="Primary"]{
   display:none!important;
 }
+/* Keep Detect / Verify / Respond in one equal-height row; longer copy wraps inside the card. */
+[data-framer-name="Section Workflow"] [data-framer-name="Features Grid"]{
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  align-items:stretch!important;
+  justify-content:center!important;
+  gap:0!important;
+  width:100%!important;
+  height:auto!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]{
+  flex:1 1 0!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:auto!important;
+  align-self:stretch!important;
+  display:flex!important;
+  flex-direction:column!important;
+  place-self:stretch!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Card Top"]{
+  flex:1 0 auto!important;
+  width:100%!important;
+  min-height:168px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  box-sizing:border-box!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Card Top"] [data-framer-component-type=RichTextContainer],
+[data-framer-name="Section Workflow"] [data-framer-name="Card Top"] p,
+[data-framer-name="Section Workflow"] [data-framer-name="Card Top"] .framer-text,
+[data-framer-name="Section Workflow"] [data-framer-name="Card Top"] h3{
+  width:100%!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Visual Wrapper"]{
+  flex:0 0 auto!important;
+  width:100%!important;
+  margin-top:auto!important;
+}
+/* Detect card: match Verify/Respond visual frame; scale radar so it doesn't overflow */
+[data-framer-name="Section Workflow"] [data-framer-name="Visual Wrapper"]{
+  height:330px!important;
+  max-height:330px!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) [data-framer-name="Visual Container"]{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) [data-framer-name="Content Wrap"],
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) .drx-detect-content{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  transform:none!important;
+  overflow:hidden!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) .drx-detect-stage{
+  position:absolute!important;
+  inset:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) .drx-detect-stage [data-framer-background-image-wrapper]{
+  z-index:0!important;
+  opacity:1!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  transform:scale(1.25)!important;
+  transform-origin:center center!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) .drx-detect-stage [data-framer-background-image-wrapper] img{
+  object-fit:contain!important;
+  object-position:center!important;
+  width:100%!important;
+  height:100%!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) .drx-feature-overlay{
+  z-index:2!important;
+  inset:0!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-detect-t) .drx-feature-overlay svg{
+  width:96%!important;
+  height:96%!important;
+  max-width:96%!important;
+  max-height:96%!important;
+  display:block!important;
+}
+/* Verify card: keep content inside padded Visual Wrapper like Detect/Respond */
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-verify-t) [data-framer-name="Visual Wrapper"]{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:center!important;
+  height:330px!important;
+  max-height:330px!important;
+  padding:32px!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-verify-t) .drx-verify-stage{
+  position:relative!important;
+  inset:auto!important;
+  flex:1 1 auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  border-radius:inherit!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-verify-t) .drx-verify-stage [data-framer-background-image-wrapper]{
+  position:absolute!important;
+  z-index:0!important;
+  opacity:1!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  transform:none!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-verify-t) .drx-verify-stage [data-framer-background-image-wrapper] img{
+  object-fit:contain!important;
+  object-position:center!important;
+  width:100%!important;
+  height:100%!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-verify-t) .drx-verify-overlay{
+  position:absolute!important;
+  z-index:2!important;
+  inset:0!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-verify-t) .drx-verify-overlay svg{
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  display:block!important;
+}
+/* Respond card: bg image only + four-way response diagram */
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-respond-t) [data-framer-name="Visual Wrapper"]{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:center!important;
+  height:330px!important;
+  max-height:330px!important;
+  padding:32px!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-respond-t) .drx-respond-stage{
+  position:relative!important;
+  flex:1 1 auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  border-radius:inherit!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-respond-t) .drx-respond-stage [data-framer-background-image-wrapper]{
+  position:absolute!important;
+  z-index:0!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-respond-t) .drx-respond-stage [data-framer-background-image-wrapper] img{
+  object-fit:contain!important;
+  object-position:center!important;
+  width:100%!important;
+  height:100%!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-respond-t) .drx-respond-overlay{
+  position:absolute!important;
+  z-index:2!important;
+  inset:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+[data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]:has(#drx-respond-t) .drx-respond-overlay svg{
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  display:block!important;
+}
+@media (max-width:809.98px){
+  [data-framer-name="Section Workflow"] [data-framer-name="Features Grid"]{
+    flex-direction:column!important;
+    flex-wrap:nowrap!important;
+  }
+  [data-framer-name="Section Workflow"] [data-framer-name="Feature Card"]{
+    width:100%!important;
+    flex:none!important;
+  }
+  [data-framer-name="Section Workflow"] [data-framer-name="Card Top"]{
+    min-height:0!important;
+  }
+}
 [data-framer-name="Social Wrapper"] a,
 [data-framer-name="Social Wrapper"] div[data-framer-name=Desktop]{pointer-events:none!important;cursor:default!important}
 nav a[data-drx-nav-noop]{cursor:default!important}
@@ -681,6 +914,42 @@ const APPEAR_STYLE = `<style id="drx-scroll-appear">
     inset:0!important;
     width:100%!important;
     height:100%!important;
+  }
+  /* Case study / testimonial stats: stack vertically on mobile (Framer keeps a row). */
+  [data-framer-name="Section Case Study"] [data-framer-name="Stats Wrapper"]{
+    --royahc:column!important;
+    display:flex!important;
+    flex-direction:column!important;
+    flex-wrap:nowrap!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:28px!important;
+    width:100%!important;
+    height:auto!important;
+  }
+  [data-framer-name="Section Case Study"] [data-framer-name="Stats Wrapper"] > *{
+    flex:none!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+  }
+  [data-framer-name="Section Case Study"] [data-framer-name="Stat Card"]{
+    width:100%!important;
+    max-width:100%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:6px!important;
+  }
+  [data-framer-name="Section Case Study"] [data-framer-name="Stat Card"] [data-framer-component-type=RichTextContainer],
+  [data-framer-name="Section Case Study"] [data-framer-name="Stat Card"] p,
+  [data-framer-name="Section Case Study"] [data-framer-name="Stat Card"] .framer-text{
+    width:100%!important;
+    max-width:100%!important;
+    text-align:center!important;
+    white-space:normal!important;
+    overflow:visible!important;
   }
 }
 @media (prefers-reduced-motion:reduce){
