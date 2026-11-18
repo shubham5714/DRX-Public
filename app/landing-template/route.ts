@@ -342,7 +342,13 @@ nav a[data-drx-nav-noop]{cursor:default!important}
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-unify-t),
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tim-t),
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-fed-t),
-[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t){
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-soar-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-ueba-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-ctx-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-route-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-agents-t),
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tti-t){
   position:relative!important;
   overflow:hidden!important;
 }
@@ -350,14 +356,26 @@ nav a[data-drx-nav-noop]{cursor:default!important}
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-unify-t) [data-framer-background-image-wrapper],
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tim-t) [data-framer-background-image-wrapper],
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-fed-t) [data-framer-background-image-wrapper],
-[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t) [data-framer-background-image-wrapper]{
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-soar-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-ueba-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-ctx-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-route-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-agents-t) [data-framer-background-image-wrapper],
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tti-t) [data-framer-background-image-wrapper]{
   z-index:0!important;
 }
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-pipeline-t) [data-framer-background-image-wrapper] img,
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-unify-t) [data-framer-background-image-wrapper] img,
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tim-t) [data-framer-background-image-wrapper] img,
 [data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-fed-t) [data-framer-background-image-wrapper] img,
-[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t) [data-framer-background-image-wrapper] img{
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-forensic-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-soar-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-ueba-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-ctx-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-route-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-agents-t) [data-framer-background-image-wrapper] img,
+[data-framer-name="Section Features"] [data-framer-name="Visual BG"]:has(#drx-tti-t) [data-framer-background-image-wrapper] img{
   object-fit:cover!important;
   width:100%!important;
   height:100%!important;
